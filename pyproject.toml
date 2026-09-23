@@ -1,0 +1,103 @@
+[project]
+name = "pytrain"
+version = "1.0.0"
+description = "No-code machine learning playground for beginners: load, preprocess, train, and evaluate models from the browser"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Abdelrhman Ebied", email = "abdelrhmanebied170@gmail.com" },
+]
+requires-python = ">=3.13"
+keywords = ["machine-learning", "no-code", "beginners", "scikit-learn", "xgboost", "fastapi"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "datasets>=5.0.1",
+    "fastapi>=0.141.1",
+    "huggingface-hub>=1.32.0",
+    "mlflow>=3.16.1",
+    "pandas>=2.2",
+    "python-multipart>=0.0.20",
+    "pyyaml>=6.0",
+    "scikit-learn>=1.9.1",
+    "uvicorn>=0.53.0",
+    "xgboost-cpu>=3.4.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/AbdelrhmanEbied/PyTrain"
+Repository = "https://github.com/AbdelrhmanEbied/PyTrain"
+Issues = "https://github.com/AbdelrhmanEbied/PyTrain/issues"
+
+[project.optional-dependencies]
+formats = [
+    "openpyxl>=3.1.0",
+    "xlrd>=2.0.1",
+    "lxml>=5.0.0",
+    "pyreadstat>=1.2.0",
+]
+
+[project.scripts]
+pytrain = "api.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["api", "data", "models", "training", "mlflow_integration"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"static" = "static"
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/api",
+    "/data",
+    "/models",
+    "/training",
+    "/mlflow_integration",
+    "/static",
+    "/frontend/src",
+    "/frontend/index.html",
+    "/frontend/package.json",
+    "/frontend/package-lock.json",
+    "/frontend/vite.config.js",
+    "/docs",
+    "/tests",
+    "/.github",
+    "/LICENSE",
+    "/README.md",
+    "/pyproject.toml",
+    "/uv.lock",
+    "/.python-version",
+    "/.gitignore",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+    "ruff>=0.9.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501", "B008"]

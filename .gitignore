@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual env
+.venv/
+venv/
+env/
+
+# Pytest
+.pytest_cache/
+
+# Ruff
+.ruff_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# MLflow
+mlruns/
+mlflow.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Data (large/generated)
+data/test_datasets/titanic.csv
+data/uploads/
+data/jobs.db
+mlflow-ui.log
+
+# Archive
+archive/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
