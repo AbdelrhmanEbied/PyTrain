@@ -1,0 +1,19 @@
+dataset:
+  source: huggingface
+  identifier: phihung/titanic
+  target: Survived
+training:
+  model_name: logistic_regression
+  task: classification
+  params:
+    max_iter: 500
+  test_size: 0.2
+  stratify: true
+  random_state: 42
+  log_mlflow: true
+  experiment_name: titanic_lr
+param_config:
+  grid:
+    C: [0.1, 1.0, 10.0]
+  cv: 3
+  scoring: accuracy

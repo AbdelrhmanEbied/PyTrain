@@ -1,0 +1,19 @@
+dataset:
+  source: sklearn
+  identifier: iris
+  target: target
+model:
+  model_name: random_forest_classifier
+  task: classification
+  params:
+    n_estimators: 200
+    max_depth: 8
+    random_state: 42
+test_size: 0.2
+stratify: true
+log_mlflow: true
+experiment_name: iris_rf
+preprocessing:
+  operations:
+    - operation: drop_missing_rows
+      how: any
