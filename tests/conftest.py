@@ -47,3 +47,17 @@ def parquet_file(tmp_path):
     path = tmp_path / "test.parquet"
     df.to_parquet(path, index=False)
     return path
+
+
+@pytest.fixture(scope="session", autouse=True)
+def ensure_titanic_csv():
+    from pathlib import Path
+
+    path = Path("data/test_datasets/titanic.csv")
+    if not path.exists():
+        from sklearn.datasets import fetch_openml
+
+        bunch = fetch_openml("titanic", version=1, as_frame=True, parser="pandas")
+        path.parent.mkdir(parents=True, exist_ok=True)
+        bunch.frame.to_csv(path, index=False)
+    return path
