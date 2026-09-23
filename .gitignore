@@ -35,7 +35,6 @@ mlflow.db
 Thumbs.db
 
 # Data (large/generated)
-data/test_datasets/titanic.csv
 data/uploads/
 data/jobs.db
 mlflow-ui.log
